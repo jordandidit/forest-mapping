@@ -1,0 +1,1 @@
+import{_ as e}from"./mathUtils-B92Yztdr.js";function t(t,n,i=0){let s=e(t,0,a);for(let e=0;e<4;e++)n[i+e]=Math.floor(256*o(s*r[e]))}function n(e,t=0){let n=0;for(let r=0;r<4;r++)n+=e[t+r]*i[r];return n}var r=[1,256,65536,16777216],i=[1/256,1/65536,1/16777216,1/4294967296],a=n(new Uint8ClampedArray([255,255,255,255]));function o(e){return e-Math.floor(e)}export{n,t};

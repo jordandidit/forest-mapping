@@ -1,0 +1,1 @@
+var e;(function(e){e[e.KILOBYTES=1024]=`KILOBYTES`,e[e.MEGABYTES=1048576]=`MEGABYTES`,e[e.GIGABYTES=1073741824]=`GIGABYTES`})(e||={});export{e as t};

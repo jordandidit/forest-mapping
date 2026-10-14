@@ -1,0 +1,1 @@
+import"./VertexAttribute-BNGbSfhI.js";import"./glsl-Cd37kqnI.js";import"./ShaderBuilder-Bk1OGC9-.js";import{f as e}from"./DefaultLayouts--AoZmIk8.js";import"./verticalOffsetUtils-DMFlvZy4.js";export{e as build};

@@ -1,0 +1,1 @@
+var e=class{constructor(e,t,n,r,i,a=!1,o=0){this.name=e,this.count=t,this.type=n,this.offset=r,this.stride=i,this.normalized=a,this.divisor=o}};export{e as t};

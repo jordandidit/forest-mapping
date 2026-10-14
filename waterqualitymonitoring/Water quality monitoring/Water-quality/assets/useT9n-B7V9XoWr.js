@@ -1,0 +1,1 @@
+import{va as e}from"./index-OLwfcIFz.js";import{n as t}from"./controllers-Dxa25XVz.js";var n=t(e);export{n as t};

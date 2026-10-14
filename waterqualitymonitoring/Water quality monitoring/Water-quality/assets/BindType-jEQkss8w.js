@@ -1,0 +1,1 @@
+var e;(function(e){e[e.Bind=0]=`Bind`,e[e.Pass=1]=`Pass`,e[e.Draw=2]=`Draw`})(e||={});export{e as t};

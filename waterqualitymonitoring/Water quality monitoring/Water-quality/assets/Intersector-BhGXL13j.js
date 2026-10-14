@@ -1,0 +1,1 @@
+import{n as e}from"./intersectorUtils-CJBchVua.js";var t=class extends e{constructor(e,t,n,r,i){super(e,t),this.layerUid=e,this.graphicUid=t,this.triangleNr=n,this.baseBoundingSphere=r,this.numLodLevels=i}};export{t};

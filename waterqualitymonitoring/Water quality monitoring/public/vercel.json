@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/", "destination": "/water-quality/", "permanent": false },
+    { "source": "/water-quality", "destination": "/water-quality/", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/water-quality/assets/:path*", "destination": "/assets/:path*" },
+    { "source": "/water-quality/:file(favicon\.svg|icons\.svg)", "destination": "/:file" },
+    { "source": "/water-quality/:path*", "destination": "/index.html" }
+  ]
+}

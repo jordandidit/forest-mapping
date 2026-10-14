@@ -1,0 +1,1 @@
+import{s as e}from"./Error-CMZF0Dsp.js";function t(t,n){let r;if(typeof t==`string`)r=e(t+`-seed(${n})`);else{let e=12;r=t^n;do r=107*(r>>8^r)+e|0;while(--e!=0)}return(1+r/(1<<31))/2}function n(e){return Math.floor(t(e,r)*i)}var r=53290320,i=10;export{n,t};

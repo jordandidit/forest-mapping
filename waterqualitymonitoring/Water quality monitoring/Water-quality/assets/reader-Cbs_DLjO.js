@@ -1,0 +1,1 @@
+import{n as e}from"./Accessor-DO412cQ4.js";function t(t,n,r){let i,a;return n===void 0||Array.isArray(n)?(a=t,r=n,i=[void 0]):(a=n,i=Array.isArray(t)?t:[t]),(t,n)=>{let o=t.constructor.prototype;i.forEach((i=>{let s=e(t,i,a);s.read&&typeof s.read==`object`||(s.read={}),s.read.reader=o[n],r&&(s.read.source=(s.read.source||[]).concat(r))}))}}export{t};

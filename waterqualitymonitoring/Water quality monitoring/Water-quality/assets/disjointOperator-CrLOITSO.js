@@ -1,0 +1,1 @@
+import{H as e}from"./ProjectionTransformation-DJxhgEiI.js";import{a as t,i as n}from"./jsonConverter-CDWY50g1.js";var r=new e;function i(e,i){let a=n(e);return r.execute(a.getGeometry(),t(i),a.getSpatialReference())}export{i as execute};

@@ -1,0 +1,1 @@
+function e(e,t,n){return{objectId:e,target:t,distance:n,type:`vertex`}}function t(e,t,n,r,i,a=!1){return{objectId:e,target:t,distance:n,type:`edge`,start:r,end:i,draped:a}}export{e as n,t};

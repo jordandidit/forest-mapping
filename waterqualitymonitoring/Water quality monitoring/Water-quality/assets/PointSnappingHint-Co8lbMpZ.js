@@ -1,0 +1,1 @@
+import{hn as e}from"./index-OLwfcIFz.js";import{J as t}from"./hitTestSelectUtils-B4PphPBF.js";var n=class n extends t{constructor(e,t,n){super(t,n),this.point=e}equals(t){return t instanceof n&&e(this.point,t.point)}};export{n as t};

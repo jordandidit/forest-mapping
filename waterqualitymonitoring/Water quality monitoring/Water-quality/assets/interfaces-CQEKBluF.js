@@ -1,0 +1,1 @@
+var e;(function(e){e[e.SAVE=0]=`SAVE`,e[e.SAVE_AS=1]=`SAVE_AS`})(e||={});export{e as t};

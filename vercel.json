@@ -1,0 +1,49 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm install --prefix web",
+  "buildCommand": "npm run build --prefix web",
+  "outputDirectory": "web/dist",
+  "framework": null,
+  "env": {
+    "VITE_BASE_PATH": "/",
+    "VITE_API_BASE": "/api",
+    "VITE_USE_GIS_PROXY": "true"
+  },
+  "functions": {
+    "web/api/index.js": {
+      "memory": 1024,
+      "maxDuration": 60,
+      "includeFiles": "web/server/**"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/web/api"
+    },
+    {
+      "source": "/forest-mapping/api/(.*)",
+      "destination": "/web/api"
+    },
+    {
+      "source": "/oauth/callback",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/oauth/callback/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/forest-mapping/oauth/callback",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/forest-mapping/oauth/callback/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/((?!api(?:/|$)|assets(?:/|$)|favicon\\.svg|web/api(?:/|$)).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

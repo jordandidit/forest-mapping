@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="terrain" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a2f1a"/>
+      <stop offset="35%" stop-color="#2a4520"/>
+      <stop offset="65%" stop-color="#3d5528"/>
+      <stop offset="100%" stop-color="#2a3a1c"/>
+    </linearGradient>
+    <radialGradient id="ndciHot" cx="72%" cy="38%" r="28%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.95"/>
+      <stop offset="35%" stop-color="#e6c229" stop-opacity="0.85"/>
+      <stop offset="70%" stop-color="#3cb44b" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#0e8f8a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ndciMid" cx="48%" cy="58%" r="22%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#3cb44b" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#0b3d6e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lakeFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b3d6e"/>
+      <stop offset="40%" stop-color="#0e6e7a"/>
+      <stop offset="70%" stop-color="#2a9e5a"/>
+      <stop offset="100%" stop-color="#1a7a8a"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <clipPath id="lakeClip">
+      <!-- Stylized Lake Muhazi shoreline (elongated irregular basin) -->
+      <path d="M210 280
+        C250 180, 380 140, 520 160
+        C640 175, 720 150, 820 190
+        C920 235, 980 280, 1020 360
+        C1050 430, 1020 500, 940 560
+        C860 620, 740 650, 620 640
+        C500 630, 400 600, 320 540
+        C240 470, 180 380, 210 280 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- Terrain / agricultural mosaic basemap -->
+  <rect width="1200" height="800" fill="url(#terrain)"/>
+  <g opacity="0.35">
+    <path d="M0 120 L180 80 L320 160 L140 220 Z" fill="#4a6a30"/>
+    <path d="M900 80 L1180 40 L1200 200 L980 180 Z" fill="#3a5525"/>
+    <path d="M40 520 L220 480 L280 640 L60 680 Z" fill="#4a6030"/>
+    <path d="M860 620 L1100 580 L1180 760 L900 780 Z" fill="#355028"/>
+    <path d="M400 40 L560 20 L600 100 L420 120 Z" fill="#4a6a28"/>
+  </g>
+  <!-- Field parcel lines -->
+  <g stroke="#1a2810" stroke-width="1" opacity="0.25" fill="none">
+    <path d="M20 200 H400 M60 280 H360 M100 360 H300"/>
+    <path d="M800 100 H1180 M840 180 H1160 M900 640 H1180"/>
+  </g>
+
+  <!-- Lake water body -->
+  <path
+    d="M210 280
+      C250 180, 380 140, 520 160
+      C640 175, 720 150, 820 190
+      C920 235, 980 280, 1020 360
+      C1050 430, 1020 500, 940 560
+      C860 620, 740 650, 620 640
+      C500 630, 400 600, 320 540
+      C240 470, 180 380, 210 280 Z"
+    fill="url(#lakeFill)"
+    stroke="#9ec9e8"
+    stroke-width="2"
+    stroke-opacity="0.55"
+  />
+
+  <!-- Scientific NDCI raster overlay clipped to lake -->
+  <g clip-path="url(#lakeClip)">
+    <rect width="1200" height="800" fill="#0b3d6e" opacity="0.35"/>
+    <ellipse cx="860" cy="300" rx="220" ry="160" fill="url(#ndciHot)" filter="url(#soft)"/>
+    <ellipse cx="560" cy="470" rx="180" ry="140" fill="url(#ndciMid)" filter="url(#soft)"/>
+    <ellipse cx="400" cy="320" rx="140" ry="110" fill="#0e8f8a" opacity="0.55" filter="url(#soft)"/>
+    <ellipse cx="700" cy="520" rx="120" ry="90" fill="#3cb44b" opacity="0.45" filter="url(#soft)"/>
+  </g>
+
+  <!-- Shoreline highlight -->
+  <path
+    d="M210 280
+      C250 180, 380 140, 520 160
+      C640 175, 720 150, 820 190
+      C920 235, 980 280, 1020 360
+      C1050 430, 1020 500, 940 560
+      C860 620, 740 650, 620 640
+      C500 630, 400 600, 320 540
+      C240 470, 180 380, 210 280 Z"
+    fill="none"
+    stroke="#c8e6f5"
+    stroke-width="1.5"
+    stroke-opacity="0.4"
+  />
+
+  <!-- Replaceable asset marker for integration -->
+  <!-- Replace this SVG with a real Lake Muhazi satellite/NDCI composite at: -->
+  <!-- /assets/maps/lake-muhazi-satellite-placeholder.* -->
+</svg>

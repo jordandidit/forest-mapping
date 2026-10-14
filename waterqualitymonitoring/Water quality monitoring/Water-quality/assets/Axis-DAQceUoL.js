@@ -1,0 +1,1 @@
+var e;(function(e){e[e.X=0]=`X`,e[e.Y=1]=`Y`,e[e.Z=2]=`Z`})(e||={});export{e as t};

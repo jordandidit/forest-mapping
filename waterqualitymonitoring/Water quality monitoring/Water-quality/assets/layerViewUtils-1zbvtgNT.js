@@ -1,0 +1,1 @@
+import"./Error-CMZF0Dsp.js";function e(e){return e&&typeof e.highlight==`function`}function t(e,t,n){return e==null||e>=n&&(t===0||e<=t)}function n(e,n){if(n&&e){let{minScale:i,maxScale:a}=e;if(r(i,a))return t(n,i,a)}return!0}function r(e,t){return e!=null&&e>0||t!=null&&t>0}function i(e){return!e?.minScale||!e.maxScale||e.minScale>=e.maxScale}export{i,e as n,n as r,t};

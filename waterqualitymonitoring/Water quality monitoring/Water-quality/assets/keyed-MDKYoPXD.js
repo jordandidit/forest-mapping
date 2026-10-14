@@ -1,0 +1,1 @@
+import{Aa as e,Fa as t,ja as n,ka as r}from"./index-OLwfcIFz.js";var i=e(class extends n{constructor(){super(...arguments),this.key=t}render(e,t){return this.key=e,t}update(e,[t,n]){return t!==this.key&&(r(e),this.key=t),n}});export{i as t};

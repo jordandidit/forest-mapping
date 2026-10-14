@@ -1,0 +1,1 @@
+import{i as e,r as t}from"./jsonConverter-CDWY50g1.js";import{i as n,r}from"./operatorSimplify-C5i5oCai.js";function i(n){let i=e(n),a=i.getSpatialReference();return t(r(i.getGeometry(),a,!1),a)}function a(t){let r=e(t);return n(r.getGeometry(),r.getSpatialReference(),!1)}export{i as execute,a as isSimple};

@@ -1,0 +1,1 @@
+import{l as e}from"./Matrix4BindUniform-CcMQBvOS.js";import{t}from"./BindType-jEQkss8w.js";var n=class extends e{constructor(e,n){super(e,`sampler2D`,t.Bind,((t,r)=>t.bindTexture(e,n(r))))}};export{n as t};

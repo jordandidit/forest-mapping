@@ -1,0 +1,130 @@
+:root {
+  /* Surfaces — earth observation / environmental instrument.
+     App is the deepest navy. Panels lift off it. Inset groups sit between. */
+  --color-bg-app: #070b14;
+  --color-bg-inset: #0c1220;
+  --color-bg-panel: #121a2c;
+  --color-bg-panel-elevated: #182336;
+  --color-bg-hover: #1a2438;
+  --color-bg-active: #1c2d4a;
+  --color-bg-selected: #163056;
+
+  --color-border: #1a2436;
+  --color-border-subtle: #131c2c;
+  --color-border-strong: #243247;
+
+  /* Text levels. Primary is near-white. Secondary is a readable cool gray, not blue.
+     Muted is only for metadata. Ratios below are against --color-bg-panel (#121a2c). */
+  --color-text-primary: #f3f6fb;
+  --color-text-secondary: #c5d0dc;
+  --color-text-muted: #8e9aab;
+  --color-text-inverse: #070b14;
+
+  --color-accent: #3b9eff;
+  --color-accent-muted: #2563a8;
+  --color-accent-soft: rgba(59, 158, 255, 0.12);
+
+  /* Status — restrained semantic meaning */
+  --color-status-good: #22c55e;
+  --color-status-moderate: #facc15;
+  --color-status-poor: #f97316;
+  --color-status-critical: #ef4444;
+  --color-status-unknown: #64748b;
+
+  --color-trend-up: #f97316;
+  --color-trend-down: #22c55e;
+  --color-trend-stable: #94a6bd;
+
+  /* Parameter accents */
+  --color-param-chlorophyll: #34d399;
+  --color-param-turbidity: #60a5fa;
+  --color-param-vegetation: #4ade80;
+  --color-param-bloom: #ef4444;
+
+  /* Chart chrome */
+  --color-chart-grid: rgba(100, 116, 139, 0.18);
+  --color-chart-axis: #8e9aab;
+  --color-chart-baseline: rgba(148, 166, 189, 0.55);
+
+  /* NDCI scientific raster legend — do not alter renderer colors */
+  --color-ndci-0: #0b3d6e;
+  --color-ndci-005: #0e8f8a;
+  --color-ndci-010: #3cb44b;
+  --color-ndci-015: #e6c229;
+  --color-ndci-020: #e85d04;
+
+  --gradient-ndci: linear-gradient(
+    90deg,
+    var(--color-ndci-0) 0%,
+    var(--color-ndci-005) 25%,
+    var(--color-ndci-010) 50%,
+    var(--color-ndci-015) 75%,
+    var(--color-ndci-020) 100%
+  );
+
+  /* UI face is Inter Tight — the only sans installed. Mono stays for measurements. */
+  --font-sans: "Inter Tight", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* Type scale — readable product sizes, not a condensed micro-grid */
+  --text-2xs: 11px;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-md: 15px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 30px;
+  --text-3xl: 32px;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --tracking-tight: -0.011em;
+  --tracking-display: -0.02em;
+  --tracking-section: 0.01em;
+  --tracking-wide: 0.04em;
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.4;
+  --leading-normal: 1.5;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* Layout — target 1440–1600 × 900–1000 */
+  --nav-height: 3.5rem;
+  --insights-width: 21rem;
+  --sidebar-width: var(--insights-width);
+  --temporal-panel-height: min(40vh, 24rem);
+
+  /* Radius — major surfaces 14px, controls 10px, chips stay compact. */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-control: 10px;
+  --radius-surface: 14px;
+
+  /* Depth is selective. Level 1 surfaces, level 2 map, level 3 overlays. */
+  --shadow-surface: 0 0 0 1px rgba(243, 246, 251, 0.06), 0 1px 2px rgba(0, 0, 0, 0.22),
+    0 8px 18px rgba(0, 0, 0, 0.14);
+  --shadow-map: 0 0 0 1px rgba(243, 246, 251, 0.1), 0 2px 6px rgba(0, 0, 0, 0.28),
+    0 14px 28px rgba(0, 0, 0, 0.2);
+  --shadow-overlay: 0 8px 20px rgba(0, 0, 0, 0.32);
+  --shadow-float: 0 4px 14px rgba(0, 0, 0, 0.3);
+  --border-float: rgba(243, 246, 251, 0.1);
+  --transition-fast: 150ms ease;
+  --motion-fast: 160ms;
+  --motion-medium: 220ms;
+  --motion-context: 300ms;
+  --motion-ease: cubic-bezier(0.2, 0, 0, 1);
+
+  color-scheme: dark;
+}

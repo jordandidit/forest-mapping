@@ -1,0 +1,1 @@
+import{j as e,r as t}from"./ProjectionTransformation-DJxhgEiI.js";var n=class extends t{getOperatorType(){return 5}execute(t,n,r,i){return e(t,n,r,8,i)}};export{n as t};

@@ -1,0 +1,123 @@
+@import 'tailwindcss';
+@import '@arcgis/core/assets/esri/themes/light/main.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Source Sans 3', 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'IBM Plex Sans', 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --bg: #f5f7f5;
+  --surface: #ffffff;
+  --surface-2: #f0f4f1;
+  --surface-3: #e7efe9;
+  --text: #162019;
+  --text-muted: #66726b;
+  --border: #dde5df;
+  --primary: #16794a;
+  --primary-dark: #0b442b;
+  --accent: #22a06b;
+  --danger: #d64545;
+  --warning: #ea7a26;
+  --amber: #d9a514;
+  --shadow: 0 1px 2px rgb(16 36 24 / 0.06), 0 8px 24px rgb(16 36 24 / 0.05);
+  --map-control: rgb(255 255 255 / 0.92);
+  --chart-grid: #e4ebe6;
+  --chart-axis: #66726b;
+  --radius: 14px;
+}
+
+.dark {
+  --bg: #0b1110;
+  --surface: #111917;
+  --surface-2: #17201d;
+  --surface-3: #1b2622;
+  --text: #f1f5f3;
+  --text-muted: #9eaaa4;
+  --border: #29342f;
+  --primary: #35b779;
+  --primary-dark: #5ed5a0;
+  --accent: #5ed5a0;
+  --danger: #ef6b6b;
+  --warning: #f0a05a;
+  --amber: #e6c25a;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.35), 0 10px 28px rgb(0 0 0 / 0.35);
+  --map-control: rgb(17 25 23 / 0.92);
+  --chart-grid: #29342f;
+  --chart-axis: #9eaaa4;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    max-height: 100dvh;
+    overflow: hidden;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .surface {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+  }
+
+  .surface-2 {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) - 2px);
+  }
+
+  .muted {
+    color: var(--text-muted);
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+}
+
+/* ArcGIS map chrome integrates with theme */
+.esri-ui .esri-widget {
+  background: var(--map-control) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.esri-view .esri-view-surface--inset-outline:focus::after {
+  outline-color: var(--primary) !important;
+}
+
+/* Keep Esri zoom clear of basemap / metric pills in the top-left */
+.forest-map .esri-ui-top-left {
+  top: 2.75rem !important;
+  left: 0.5rem !important;
+}

@@ -1,0 +1,1 @@
+import{I as e}from"./hitTestSelectUtils-B4PphPBF.js";import{t}from"./PointSnappingHint-Co8lbMpZ.js";import{n}from"./EdgeSnappingCandidate-BZ08_oZo.js";var r=class extends n{constructor(t){super({...t,constraint:new e(t.targetPoint)})}get hints(){return[new t(this.targetPoint,this.isDraped,this.domain)]}};export{r as t};

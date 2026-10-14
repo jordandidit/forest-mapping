@@ -1,0 +1,76 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "installCommand": "npm install",
+  "env": {
+    "VITE_BASE_PATH": "/",
+    "VITE_API_BASE": "/api",
+    "VITE_USE_GIS_PROXY": "true"
+  },
+  "functions": {
+    "api/index.js": {
+      "memory": 1024,
+      "maxDuration": 60,
+      "includeFiles": "server/**"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/forest-mapping/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/forest-mapping/assets/(.*)",
+      "destination": "/assets/$1"
+    },
+    {
+      "source": "/forest-mapping/oauth/callback",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/forest-mapping/oauth/callback/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/oauth/callback",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/oauth/callback/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/forest-mapping",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/forest-mapping/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/forest-mapping/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/((?!api(?:/|$)|assets(?:/|$)|favicon\\.svg|oauth(?:/|$)).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

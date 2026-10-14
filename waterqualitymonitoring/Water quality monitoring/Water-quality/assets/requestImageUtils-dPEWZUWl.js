@@ -1,0 +1,1 @@
+import{t as e}from"./request-Cv0mtoaH.js";async function t(t,n){let{data:r}=await e(t,{responseType:`image`,...n});return r}export{t};
