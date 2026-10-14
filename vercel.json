@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "npm install --prefix web",
+  "installCommand": "npm install && npm install --prefix web",
   "buildCommand": "npm run build --prefix web",
   "outputDirectory": "web/dist",
   "framework": null,
@@ -10,7 +10,7 @@
     "VITE_USE_GIS_PROXY": "true"
   },
   "functions": {
-    "web/api/index.js": {
+    "api/index.js": {
       "memory": 1024,
       "maxDuration": 60,
       "includeFiles": "web/server/**"
@@ -19,11 +19,11 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/web/api"
+      "destination": "/api"
     },
     {
       "source": "/forest-mapping/api/(.*)",
-      "destination": "/web/api"
+      "destination": "/api"
     },
     {
       "source": "/oauth/callback",
@@ -42,7 +42,7 @@
       "destination": "/index.html"
     },
     {
-      "source": "/((?!api(?:/|$)|assets(?:/|$)|favicon\\.svg|web/api(?:/|$)).*)",
+      "source": "/((?!api(?:/|$)|assets(?:/|$)|favicon\\.svg).*)",
       "destination": "/index.html"
     }
   ]
