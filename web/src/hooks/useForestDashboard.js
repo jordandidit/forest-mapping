@@ -81,7 +81,17 @@ export function useForestDashboard() {
       const me = await getCurrentUser()
       setUser(me)
       if (me?.authenticated) {
-        await loadDashboardData()
+        try {
+          sessionStorage.removeItem('fh_oauth_just_done')
+        } catch {
+          // ignore
+        }
+        // Data failures must not wipe the session — that caused Vercel OAuth bounce loops.
+        try {
+          await loadDashboardData()
+        } catch (err) {
+          setError(err)
+        }
       }
     } catch (err) {
       setUser({ authenticated: false })

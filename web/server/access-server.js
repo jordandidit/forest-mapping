@@ -82,23 +82,38 @@ function open(token) {
   }
 }
 
-function setSession(res, session) {
-  res.cookie(COOKIE_NAME, seal(session), {
+function cookieOpts() {
+  return {
     httpOnly: true,
     sameSite: 'lax',
     // Vercel and any HTTPS host must set Secure or browsers drop the cookie.
     secure: IS_VERCEL || process.env.NODE_ENV === 'production',
-    maxAge: TOKEN_TTL_MIN * 60 * 1000,
     path: '/',
+  }
+}
+
+function setSession(res, session) {
+  const sealed = seal(session)
+  res.cookie(COOKIE_NAME, sealed, {
+    ...cookieOpts(),
+    maxAge: TOKEN_TTL_MIN * 60 * 1000,
   })
+  return sealed
 }
 
 function clearSession(res) {
-  res.clearCookie(COOKIE_NAME, { path: '/' })
+  res.clearCookie(COOKIE_NAME, cookieOpts())
+}
+
+function bearerSessionRaw(req) {
+  const header = String(req.headers.authorization || '')
+  const match = header.match(/^Bearer\s+(.+)$/i)
+  return match?.[1]?.trim() || null
 }
 
 function getSession(req) {
-  const raw = req.cookies?.[COOKIE_NAME]
+  // Prefer HttpOnly cookie; fall back to Bearer (sessionStorage) for Vercel edge cases.
+  const raw = req.cookies?.[COOKIE_NAME] || bearerSessionRaw(req)
   if (!raw) return null
   const session = open(raw)
   if (!session?.token || !session?.expires) return null
@@ -254,7 +269,7 @@ app.post('/api/auth/portal-session', async (req, res) => {
         ? expiresRaw
         : Date.now() + TOKEN_TTL_MIN * 60 * 1000
 
-    setSession(res, {
+    const sessionToken = setSession(res, {
       token,
       expires,
       username: portalUser.username,
@@ -265,6 +280,8 @@ app.post('/api/auth/portal-session', async (req, res) => {
       username: portalUser.username,
       fullName: portalUser.fullName || null,
       expires,
+      // Client keeps this when Set-Cookie is dropped (some Vercel/browser combos).
+      sessionToken,
     })
   } catch (err) {
     res.status(err.status || 500).json({ error: err.message || 'Portal session failed', code: 'AUTH_FAILED' })

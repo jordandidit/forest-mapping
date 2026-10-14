@@ -55,11 +55,16 @@ export function isOAuthCallbackPath(pathname = window.location.pathname) {
   return /\/oauth\/callback\/?$/.test(pathname)
 }
 
-/** True when portal returned an OAuth hash (app home or /oauth/callback). */
+/** True when portal returned an OAuth token/error in the URL (hash or query). */
 export function isOAuthReturn() {
-  if (isOAuthCallbackPath()) return true
   const hash = window.location.hash || ''
-  return /[#&]access_token=/.test(hash) || hash.startsWith('#access_token=') || /[#&?]error=/.test(hash)
+  const search = window.location.search || ''
+  const blob = `${hash}${search}`
+  return (
+    /[#&?]access_token=/.test(blob) ||
+    hash.startsWith('#access_token=') ||
+    /[#&?]error=/.test(blob)
+  )
 }
 
 export function registerOAuth() {
@@ -125,7 +130,8 @@ export async function completeOAuthCallback() {
   registerOAuth()
 
   const hash = window.location.hash?.replace(/^#/, '') || ''
-  const params = new URLSearchParams(hash)
+  const query = window.location.search?.replace(/^\?/, '') || ''
+  const params = new URLSearchParams(hash || query)
 
   if (params.get('error')) {
     const detail = params.get('error_description') || params.get('error')
@@ -149,8 +155,9 @@ export async function completeOAuthCallback() {
     userId: username || undefined,
   })
 
-  // Drop secrets from the address bar.
-  window.history.replaceState({}, document.title, window.location.pathname)
+  // Drop secrets and leave /oauth/callback so a refresh does not re-run the exchange.
+  const home = (import.meta.env.BASE_URL || '/').replace(/\/?$/, '/') || '/'
+  window.history.replaceState({}, document.title, home)
 
   return normalizeCredential({
     token: accessToken,

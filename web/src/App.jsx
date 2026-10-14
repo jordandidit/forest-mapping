@@ -28,6 +28,19 @@ export default function App() {
 
   useEffect(() => {
     if (!needsLogin || oauthStarted.current) return
+    // After a successful portal exchange, avoid an immediate second authorize redirect
+    // if /api/auth/me briefly fails (cookie race on cold start).
+    try {
+      if (sessionStorage.getItem('fh_oauth_just_done') === '1') {
+        sessionStorage.removeItem('fh_oauth_just_done')
+        setOauthError(
+          'Signed in with GeoHub, but the app session is not ready yet. Refresh once, or check that /api/auth/me works on this deployment.',
+        )
+        return
+      }
+    } catch {
+      // ignore
+    }
     oauthStarted.current = true
     try {
       beginOAuthLogin()

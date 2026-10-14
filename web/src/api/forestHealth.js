@@ -194,6 +194,11 @@ export async function completeOAuthLogin() {
     expires: cred.expires,
     username: cred.username,
   })
+  try {
+    sessionStorage.setItem('fh_oauth_just_done', '1')
+  } catch {
+    // ignore
+  }
   clearCaches()
   return result
 }
